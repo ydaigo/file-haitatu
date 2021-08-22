@@ -12,6 +12,6 @@ sh test.sh
 ```
 git add .
 git commit -m "commit"
-git push heroku main
-git push origin main
+git push heroku master
+git push origin master
 ```
