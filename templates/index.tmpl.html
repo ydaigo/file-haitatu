@@ -2,9 +2,13 @@
 
 <body>
     <h1>NEKO配達</h1>
-    <p>
+    <p>{{.}}
         <a href="static/Cat-03.jpg" download="Cat-03.jpg">画像を保存</a>
     </p>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button type="submit">送信する</button>
+    </form>
 </body>
 
 </html>
