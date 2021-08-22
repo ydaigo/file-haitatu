@@ -2,14 +2,14 @@ new Vue({
     el: '#app',
     delimiters: ['${', '}'], // Avoid Twig conflicts
     data: {
-        filelist: [] // Store our uploaded files
+        fileName: null // Store our uploaded files
     },
     methods: {
         onChange() {
-            this.filelist.push(...this.$refs.file.files);
+            this.fileName = [...this.$refs.file.files][0].name;
         },
         remove(i) {
-            this.filelist.splice(i, 1);
+            this.fileName = null;
         },
         dragover(event) {
             event.preventDefault();

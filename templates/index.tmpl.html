@@ -21,23 +21,17 @@
         </div>
     </div>
 
-    <main class="container h-75">
+    <main class="container h-50">
         <form method="post" enctype="multipart/form-data">
             <div id="app">
                 <div class="drop_area" @dragover="dragover" @dragleave="dragleave" @drop="drop">
-                    ファイルアップロード
+                    <p>ファイルアップロード</p>
+                    <p>${ fileName }</p>
                     <input class="d-none" type="file" @change="onChange" ref="file" accept=".pdf,.jpg,.jpeg,.png" />
-                    <ul class="mt-4" v-if="this.filelist.length" v-cloak>
-                        <li class="text-sm p-1" v-for="file in filelist">
-                            ${ file.name }<button class="ml-2" type="button" @click="remove(filelist.indexOf(file))" title="Remove file">remove</button>
-                        </li>
-                    </ul>
+
                 </div>
             </div>
-            <p>{{.}}
-                <a href="static/Cat-03.jpg" download="Cat-03.jpg">画像を保存</a>
-            </p>
-            <button type="submit">送信する</button>
+            <button type="submit" class="w-100 h-25 my-3">送信する</button>
         </form>
     </main>
     <script type="text/javascript" src="js/script.js"></script>
