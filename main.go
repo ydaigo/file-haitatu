@@ -21,6 +21,8 @@ func main() {
 	router.Use(gin.Logger())
 	router.LoadHTMLGlob("templates/*.tmpl.html")
 	router.Static("/static", "static")
+	router.Static("/css", "css")
+	router.Static("/js", "js")
 	u, err := generateV4GetObjectSignedURL("file-haitatu", "test.sh", os.Getenv("GOOGLE_APPLICATION_CREDENTIALS"))
 	if err != nil {
 		fmt.Print(err)
