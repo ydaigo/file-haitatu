@@ -1,4 +1,5 @@
 .drop_area {
+    flex-direction: column;
     color: gray;
     font-weight: bold;
     font-size: 1.2em;
@@ -9,4 +10,12 @@
     height: 100%;
     border: 5px solid gray;
     border-radius: 15px;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.maxWidth {
+    max-width: 540px;
 }

@@ -23,13 +23,11 @@ func main() {
 	router.Static("/static", "static")
 	router.Static("/css", "css")
 	router.Static("/js", "js")
-	u, err := generateV4GetObjectSignedURL("file-haitatu", "test.sh", os.Getenv("GOOGLE_APPLICATION_CREDENTIALS"))
-	if err != nil {
-		fmt.Print(err)
-	}
-	fmt.Print(u)
+	u := ""
 	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.tmpl.html", "hello")
+		c.HTML(http.StatusOK, "index.tmpl.html", gin.H{
+			"url": u,
+		})
 	})
 	router.POST("/", func(c *gin.Context) {
 		file, _ := c.FormFile("file")
@@ -37,7 +35,23 @@ func main() {
 		fileName := file.Filename
 		c.SaveUploadedFile(file, "tmp")
 		uploadFile("file-haitatu", fileName, "tmp")
-		c.HTML(http.StatusOK, "index.tmpl.html", fileName)
+		u, err := generateV4GetObjectSignedURL("file-haitatu", fileName, os.Getenv("GOOGLE_APPLICATION_CREDENTIALS"))
+		fmt.Print(u)
+		if err != nil {
+			fmt.Print(err)
+		}
+		c.HTML(http.StatusOK, "index.tmpl.html", gin.H{
+			"url": u,
+		})
+	})
+
+	router.GET("/hello", func(c *gin.Context) {
+		c.Writer.Header().Set("Content-Disposition", "attachment;filename=aaa")
+		c.File("static/Cat-03.jpg")
+	})
+	router.GET("/json", func(c *gin.Context) {
+		c.Writer.Header().Set("Content-Type", "application/json")
+		c.Next()
 	})
 
 	router.Run(":" + port)

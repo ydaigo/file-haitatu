@@ -6,7 +6,7 @@ new Vue({
     },
     methods: {
         onChange() {
-            this.fileName = [...this.$refs.file.files][0].name;
+            this.fileName = this.$refs.file.files[0].name;
         },
         remove(i) {
             this.fileName = null;
@@ -34,3 +34,17 @@ new Vue({
         }
     }
 });
+
+const VModal = window["vue-js-modal"].default
+Vue.use(VModal);
+new Vue({
+    el: '#up',
+    methods: {
+        show: function() {
+            this.$modal.show('hello-world');
+        },
+        hide: function() {
+            this.$modal.hide('hello-world');
+        },
+    }
+})
