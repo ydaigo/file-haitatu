@@ -48,3 +48,7 @@ new Vue({
         },
     }
 })
+
+document.getElementsByClassName("drop_area")[0].onclick = function() {
+    document.getElementById("assetsFieldHandle").click();
+};

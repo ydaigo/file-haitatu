@@ -10,6 +10,8 @@
     height: 100%;
     border: 5px solid gray;
     border-radius: 15px;
+    background-color: #ffffff;
+    position: relative;
 }
 
 [v-cloak] {
@@ -18,4 +20,8 @@
 
 .maxWidth {
     max-width: 540px;
+}
+
+.material-icons.md-248 {
+    font-size: 248px;
 }
